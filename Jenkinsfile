@@ -12,9 +12,16 @@ pipeline {
         stage('Build') {
             steps {
                 // Run the Maven build and tests
-                sh 'mvn clean test'
+                sh 'mvn clean install'
             }
         }
+
+        stage('Test') {
+                    steps {
+                        // Run the Maven build and tests
+                        sh 'mvn test'
+                    }
+                }
 
         stage('Test Reports') {
             steps {
