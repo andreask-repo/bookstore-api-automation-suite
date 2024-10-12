@@ -1,30 +1,29 @@
 package com.bookstoredemo.base;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-
-import static io.restassured.RestAssured.baseURI;
 
 public class TestBase {
 
+    protected static ExtentReports extentReports;
+    protected static final Logger logger = LogManager.getLogger(TestBase.class);
+
     @BeforeAll
-    public static void globalSetup() {
-        // Load properties from config file
-        Properties properties = new Properties();
-        try (InputStream input = TestBase.class.getClassLoader().getResourceAsStream("config.properties")) {
-            if (input == null) {
-                System.out.println("Cannot find config.properties");
-                return;
-            }
+    public static void setup() {
+        ExtentSparkReporter sparkReporter = new ExtentSparkReporter("BooksApiReport.html");
+        extentReports = new ExtentReports();
+        extentReports.attachReporter(sparkReporter);
+        logger.info("ExtentReports setup completed.");
+    }
 
-            properties.load(input);
-            baseURI = properties.getProperty("base.url");
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+    @AfterAll
+    public static void tearDown() {
+        // Flush the reports
+        extentReports.flush();
+        logger.info("ExtentReports flushed.");
     }
 }
