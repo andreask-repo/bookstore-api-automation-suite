@@ -2,7 +2,7 @@
 
 ## How-To
 In order to execute the automated scenarios the following steps must be followed:
-1. Clone the following public repository from GitHub -> https://github.com/andreask-repo/bookstore-api-tests.git
+1. Clone the following public repository from GitHub -> https://github.com/andreask-repo/bookstore-api-tests.git (master branch)
 2. Reload Maven for all the maven dependencies to be fetched
 3. Execute 'mvn test' from console or navigate to src/test/java/com/bookstoredemo/books/tests/BooksTests.java and execute the tests from Class level
 
