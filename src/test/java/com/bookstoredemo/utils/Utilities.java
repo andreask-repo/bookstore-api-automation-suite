@@ -7,6 +7,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import io.restassured.response.Response;
 
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Utilities {
 
     public static JsonObject convertResponseBodyToJson(String responseBody)
@@ -25,5 +28,13 @@ public class Utilities {
         return new Gson().fromJson(
                 Utilities.convertResponseBodyToJson(response.body().asString()),
                 BookFailedResponseDto.class);
+    }
+
+    public static String getDateTime()
+    {
+        OffsetDateTime now = OffsetDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_INSTANT;
+        return now.format(formatter);
+
     }
 }

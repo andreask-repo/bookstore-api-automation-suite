@@ -36,7 +36,7 @@ public class BooksApi {
                 .post(BOOKS_URL);
     }
 
-    public Response updateBook(int id, BookGenericDto updateBookDetails)
+    public Response updateBook(String id, BookGenericDto updateBookDetails)
     {
         Gson gson = new GsonBuilder().serializeNulls().create();
         String body = gson.toJson(updateBookDetails);
@@ -47,7 +47,7 @@ public class BooksApi {
                 .put(BOOKS_BY_ID_URL);
     }
 
-    public Response deleteBook(int id)
+    public Response deleteBook(String id)
     {
         return RestAssured.given()
                 .pathParam("id", id)
