@@ -10,11 +10,6 @@ pipeline {
         }
 
         stage('Build') {
-        environment {
-                JAVA_HOME = 'C:/Program Files/Java/jdk-17.0.3.1'
-                M2_HOME = 'C:/Program Files/Apache Software Foundation/apache-maven-3.9.9/bin'
-                PATH = "${env.M2_HOME}/bin:${env.PATH}"
-            }
             steps {
                 sh 'mvn clean install'
             }
