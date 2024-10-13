@@ -2,16 +2,16 @@ package com.bookstoredemo.books.models;
 
 public class BookGenericDto {
 
-    private String id;
+    private Integer id;
     private String title;
     private String description;
-    private String pageCount;
+    private Integer pageCount;
     private String excerpt;
     private String publishDate;
 
     public BookGenericDto() {}
 
-    public BookGenericDto(String id, String title, String description, String pageCount, String excerpt, String publishDate) {
+    public BookGenericDto(Integer id, String title, String description, Integer pageCount, String excerpt, String publishDate) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -20,11 +20,11 @@ public class BookGenericDto {
         this.publishDate = publishDate;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -44,11 +44,11 @@ public class BookGenericDto {
         this.description = description;
     }
 
-    public String getPageCount() {
+    public Integer getPageCount() {
         return pageCount;
     }
 
-    public void setPageCount(String pageCount) {
+    public void setPageCount(Integer pageCount) {
         this.pageCount = pageCount;
     }
 

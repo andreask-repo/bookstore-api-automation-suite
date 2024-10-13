@@ -10,15 +10,19 @@ pipeline {
         }
 
         stage('Build') {
+        environment {
+                JAVA_HOME = 'C:/Program Files/Java/jdk-17.0.3.1'
+                M2_HOME = 'C:/Program Files/Apache Software Foundation/apache-maven-3.9.9/bin'
+                PATH = "${env.M2_HOME}/bin:${env.PATH}"
+            }
             steps {
-                // Run the Maven build and tests
                 sh 'mvn clean install'
             }
         }
 
         stage('Test') {
                     steps {
-                        // Run the Maven build and tests
+
                         sh 'mvn test'
                     }
                 }
